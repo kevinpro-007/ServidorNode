@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const menu_1 = require("../controllers/menu");
+const router = (0, express_1.Router)();
+router.get("/api/menu/read", menu_1.ReadMenu);
+router.get("/api/menu/read/:Cid", menu_1.ReadMenuId);
+router.post("/api/menu/create", menu_1.CreateMenu);
+router.patch("/api/menu/update/:Cid", menu_1.UpdateMenu);
+router.delete("/api/menu/delete/:Cid", menu_1.DeleteMenu);
+router.get("/api/menu/read_date:?", menu_1.MenusCodr);
+exports.default = router;

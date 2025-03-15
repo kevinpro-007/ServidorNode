@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const rol_1 = require("../controllers/rol");
+const router = (0, express_1.Router)();
+router.get("/api/rol/read", rol_1.ReadRol);
+router.get("/api/rol/read/:Rid", rol_1.ReadRolId);
+router.post("/api/rol/create", rol_1.CreateRol);
+router.patch("/api/rol/update/:Rid", rol_1.UpdateRol);
+router.delete("/api/rol/delete/:Rid", rol_1.DeleteRol);
+exports.default = router;
