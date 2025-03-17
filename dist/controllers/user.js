@@ -54,7 +54,7 @@ const datosUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* (
 });
 exports.datosUsuario = datosUsuario;
 const CreateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { ci, nombre, apellido, email, password, establecimiento_ci, codr } = req.body;
+    const { ci, nombre, apellido, email, password, establecimiento_id, codr } = req.body;
     const userci = yield usuarios_1.User.findOne({ where: { ci: ci } });
     const userEmail = yield usuarios_1.User.findOne({ where: { email: email } });
     //validacion en la base de datos con ci, email
@@ -71,11 +71,11 @@ const CreateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const passwordHash = yield bcrypt_1.default.hash(password, 10);
     usuarios_1.User.create({
         ci: ci,
-        nombre: nombre,
-        apellido: apellido,
+        nombre: nombre.toUpperCase(),
+        apellido: apellido.toUpperCase(),
         email: email,
         password: passwordHash,
-        establecimiento_ci: establecimiento_ci,
+        establecimiento_id: establecimiento_id,
         codr: codr,
         estado: 1,
     });

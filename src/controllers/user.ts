@@ -44,7 +44,7 @@ export const datosUsuario = async (req: Request, res: Response) => {
     });
 }
 export const CreateUser = async (req: Request, res: Response) => {
-    const { ci, nombre, apellido, email, password, establecimiento_ci, codr } = req.body
+    const { ci, nombre, apellido, email, password, establecimiento_id, codr } = req.body
   
     const userci = await User.findOne({ where: { ci: ci } })
     
@@ -65,11 +65,11 @@ export const CreateUser = async (req: Request, res: Response) => {
 
     User.create({
         ci: ci,
-        nombre: nombre,
-        apellido: apellido,
+        nombre: nombre.toUpperCase(),
+        apellido: apellido.toUpperCase(),
         email: email,
         password: passwordHash,
-        establecimiento_ci: establecimiento_ci,
+        establecimiento_id: establecimiento_id,
         codr : codr,
         estado: 1,
     })
